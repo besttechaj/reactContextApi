@@ -1,25 +1,28 @@
-import logo from './logo.svg';
+import { createContext } from 'react';
 import './App.css';
+import ComA from './components/ComA';
 
+//creating a context known as FirstName
+const FirstName = createContext();
+
+//creating another context known LastName
+const LastName = createContext();
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    console.log(FirstName),
+    (
+      <>
+        <FirstName.Provider value={'ajay'}>
+          <LastName.Provider value={'mishra'}>
+            <ComA />
+          </LastName.Provider>
+        </FirstName.Provider>
+      </>
+    )
   );
 }
 
 export default App;
+
+//to use context in another file we need to export the context
+export { FirstName, LastName };
